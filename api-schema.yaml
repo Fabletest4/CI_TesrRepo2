@@ -1,0 +1,43 @@
+openapi: 3.0.0
+
+info:
+  title: Fraud Alerts API
+  version: 1.0.0
+
+paths:
+  /api/v1/alerts:
+    get:
+      summary: Get fraud alerts
+      responses:
+        '200':
+          description: List of alerts
+
+  /api/v1/alerts/{id}:
+    get:
+      summary: Get alert details
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Alert details
+
+components:
+  schemas:
+    FraudAlert:
+      type: object
+      properties:
+        id:
+          type: string
+        transactionId:
+          type: string
+        score:
+          type: integer
+        severity:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
